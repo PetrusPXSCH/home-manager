@@ -58,6 +58,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-100 p-6">
       <div className="max-w-md mx-auto">
+
         <h1 className="text-4xl font-bold text-center text-blue-700 mt-4">
           🏠 Home Manager
         </h1>
@@ -68,7 +69,10 @@ export default function Home() {
 
         {email ? (
           <div className="text-center mb-6">
-            <p className="text-sm text-gray-500">Connecté : {email}</p>
+            <p className="text-sm text-gray-500">
+              Connecté : {email}
+            </p>
+
             <button
               onClick={seDeconnecter}
               className="text-red-600 font-semibold mt-1"
@@ -99,7 +103,10 @@ export default function Home() {
                 const jours = joursAvant(facture.date_limite);
 
                 return (
-                  <div key={facture.id} className="flex justify-between">
+                  <div
+                    key={facture.id}
+                    className="flex justify-between"
+                  >
                     <span>{facture.organisme}</span>
 
                     <span className="font-semibold">
@@ -113,47 +120,91 @@ export default function Home() {
                 );
               })}
             </div>
-
-            {alertes.length > 3 && (
-              <p className="text-red-600 mt-3">
-                + {alertes.length - 3} autre(s)
-              </p>
-            )}
           </Link>
         )}
 
         <div className="grid grid-cols-2 gap-4">
-          <Link href="/dashboard" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            📊<br />Tableau
+
+          <Link
+            href="/dashboard"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            📊<br />
+            Tableau
           </Link>
 
-          <Link href="/budget" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            💶<br />Budget
+          <Link
+            href="/budget"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            💶<br />
+            Budget
           </Link>
 
-          <Link href="/calendrier" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            📅<br />Calendrier
+          <Link
+            href="/calendrier"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            📅<br />
+            Calendrier
           </Link>
 
-          <Link href="/factures" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            📄<br />Factures
+          <Link
+            href="/factures"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            📄<br />
+            Factures
           </Link>
 
-          <Link href="/ajouter-facture" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            ➕<br />Facture
+          <Link
+            href="/ajouter-facture"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            ➕<br />
+            Facture
           </Link>
 
-          <Link href="/documents" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            📁<br />Documents
+          <Link
+            href="/documents"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            📁<br />
+            Documents
           </Link>
 
-          <Link href="/ajouter-document" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            📎<br />Document
+          <Link
+            href="/ajouter-document"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            📎<br />
+            Document
           </Link>
 
-          <Link href="/parametres" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
-            ⚙️<br />Réglages
+          <Link
+            href="/recherche"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            🔎<br />
+            Recherche
           </Link>
+
+          <Link
+            href="/export"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            📤<br />
+            Export
+          </Link>
+
+          <Link
+            href="/parametres"
+            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
+          >
+            ⚙️<br />
+            Réglages
+          </Link>
+
         </div>
       </div>
     </main>
