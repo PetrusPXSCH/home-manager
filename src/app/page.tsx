@@ -16,7 +16,8 @@ function joursAvant(date: string) {
   const limite = new Date(date);
 
   return Math.ceil(
-    (limite.getTime() - aujourdHui.getTime()) / (1000 * 60 * 60 * 24)
+    (limite.getTime() - aujourdHui.getTime()) /
+      (1000 * 60 * 60 * 24)
   );
 }
 
@@ -125,87 +126,60 @@ export default function Home() {
 
         <div className="grid grid-cols-2 gap-4">
 
-          <Link
-            href="/dashboard"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            📊<br />
-            Tableau
+          <Link href="/dashboard" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📊<br />Tableau
           </Link>
 
-          <Link
-            href="/budget"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            💶<br />
-            Budget
+          <Link href="/budget" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            💶<br />Budget
           </Link>
 
-          <Link
-            href="/calendrier"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            📅<br />
-            Calendrier
+          <Link href="/statistiques" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📈<br />Statistiques
           </Link>
 
-          <Link
-            href="/factures"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            📄<br />
-            Factures
+          <Link href="/calendrier" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📅<br />Calendrier
           </Link>
 
-          <Link
-            href="/ajouter-facture"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            ➕<br />
-            Facture
+          <Link href="/factures" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📄<br />Factures
           </Link>
 
-          <Link
-            href="/documents"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            📁<br />
-            Documents
+          <Link href="/ajouter-facture" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            ➕<br />Facture
           </Link>
 
-          <Link
-            href="/ajouter-document"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            📎<br />
-            Document
+          <Link href="/ocr" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📷<br />OCR
           </Link>
 
-          <Link
-            href="/recherche"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            🔎<br />
-            Recherche
+          <Link href="/documents" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📁<br />Documents
           </Link>
 
-          <Link
-            href="/export"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            📤<br />
-            Export
+          <Link href="/ajouter-document" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📎<br />Document
           </Link>
 
-          <Link
-            href="/parametres"
-            className="bg-white rounded-2xl shadow p-5 text-center font-bold"
-          >
-            ⚙️<br />
-            Réglages
+          <Link href="/recherche" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            🔎<br />Recherche
+          </Link>
+
+          <Link href="/export" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📤<br />Export
+          </Link>
+
+          <Link href="/export-pdf" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            📄<br />PDF
+          </Link>
+
+          <Link href="/parametres" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            ⚙️<br />Réglages
           </Link>
 
         </div>
+
       </div>
     </main>
   );
