@@ -23,16 +23,27 @@ function joursAvant(date: string) {
 
 export default function Home() {
   const [email, setEmail] = useState<string | null>(null);
+  const [connecte, setConnecte] = useState(false);
+  const [chargement, setChargement] = useState(true);
   const [alertes, setAlertes] = useState<Facture[]>([]);
 
   useEffect(() => {
-    chargerUtilisateur();
-    chargerAlertes();
+    initialiser();
   }, []);
 
-  async function chargerUtilisateur() {
-    const { data } = await supabase.auth.getUser();
-    setEmail(data.user?.email ?? null);
+  async function initialiser() {
+    const { data } = await supabase.auth.getSession();
+
+    if (!data.session) {
+      setConnecte(false);
+      setChargement(false);
+      return;
+    }
+
+    setConnecte(true);
+    setEmail(data.session.user.email ?? null);
+    await chargerAlertes();
+    setChargement(false);
   }
 
   async function chargerAlertes() {
@@ -54,6 +65,50 @@ export default function Home() {
   async function seDeconnecter() {
     await supabase.auth.signOut();
     setEmail(null);
+    setConnecte(false);
+  }
+
+  if (chargement) {
+    return (
+      <main className="min-h-screen bg-slate-100 flex items-center justify-center">
+        <p className="font-semibold">Chargement...</p>
+      </main>
+    );
+  }
+
+  if (!connecte) {
+    return (
+      <main className="min-h-screen bg-slate-100 p-6">
+        <div className="max-w-md mx-auto">
+
+          <h1 className="text-4xl font-bold text-center text-blue-700 mt-12">
+            🏠 Home Manager
+          </h1>
+
+          <p className="text-center text-gray-500 mt-2 mb-8">
+            Factures, budget et documents familiaux
+          </p>
+
+          <div className="bg-white rounded-2xl shadow p-6 text-center">
+            <h2 className="text-2xl font-bold mb-4">
+              🔐 Connexion obligatoire
+            </h2>
+
+            <p className="text-gray-500 mb-6">
+              Connecte-toi pour accéder à Home Manager.
+            </p>
+
+            <Link
+              href="/connexion"
+              className="block bg-blue-600 text-white rounded-xl p-4 font-bold"
+            >
+              Se connecter
+            </Link>
+          </div>
+
+        </div>
+      </main>
+    );
   }
 
   return (
@@ -68,27 +123,18 @@ export default function Home() {
           Factures, budget et documents familiaux
         </p>
 
-        {email ? (
-          <div className="text-center mb-6">
-            <p className="text-sm text-gray-500">
-              Connecté : {email}
-            </p>
+        <div className="text-center mb-6">
+          <p className="text-sm text-gray-500">
+            Connecté : {email}
+          </p>
 
-            <button
-              onClick={seDeconnecter}
-              className="text-red-600 font-semibold mt-1"
-            >
-              Se déconnecter
-            </button>
-          </div>
-        ) : (
-          <Link
-            href="/connexion"
-            className="block bg-blue-600 text-white rounded-2xl shadow p-4 text-center font-bold mb-6"
+          <button
+            onClick={seDeconnecter}
+            className="text-red-600 font-semibold mt-1"
           >
-            🔐 Se connecter
-          </Link>
-        )}
+            Se déconnecter
+          </button>
+        </div>
 
         {alertes.length > 0 && (
           <Link
