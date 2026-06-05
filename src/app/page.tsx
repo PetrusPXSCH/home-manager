@@ -92,11 +92,11 @@ export default function Home() {
 
         {alertes.length > 0 && (
           <Link
-            href="/calendrier"
+            href="/notifications"
             className="block bg-red-100 border border-red-300 rounded-2xl p-5 mb-6"
           >
             <h2 className="text-xl font-bold text-red-700 mb-3">
-              ⚠️ {alertes.length} facture(s) à surveiller
+              🔔 {alertes.length} notification(s)
             </h2>
 
             <div className="space-y-2">
@@ -112,7 +112,7 @@ export default function Home() {
 
                     <span className="font-semibold">
                       {jours < 0
-                        ? `${Math.abs(jours)} j. de retard`
+                        ? `${Math.abs(jours)} j. retard`
                         : jours === 0
                         ? "Aujourd'hui"
                         : `Dans ${jours} j.`}
@@ -136,6 +136,10 @@ export default function Home() {
 
           <Link href="/statistiques" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
             📈<br />Statistiques
+          </Link>
+
+          <Link href="/notifications" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
+            🔔<br />Notifications
           </Link>
 
           <Link href="/calendrier" className="bg-white rounded-2xl shadow p-5 text-center font-bold">
